@@ -1,0 +1,12 @@
+<ActionBar title="{{registerMode ? 'Register New User' : 'Login'}}">
+    <!-- <NavigationButton visibility="collapsed" class="h2"></NavigationButton> -->
+</ActionBar>
+<StackLayout class="page">
+    <Label class="h2 m-15" text="User Name"></Label>
+    <TextField [(ngModel)]="auth.username" autocapitalization="none"></TextField>
+    <label text="Password" class="h2 m-15"></label>
+    <TextField [(ngModel)]="auth.password" secure="true" autocapitalization="none"></TextField>
+    <Button text="{{registerMode ? 'Register' : 'Login'}}" class="-primary -rounded-lg" (tap)="saveForm()"></Button>
+    <label class="m-15 h2" text="Don't have an Account yet? Register Here" (tap)="registerMode = true" *ngIf="!registerMode"></label>
+    <label class="m-15 h2" text="Already have an Account? Login Here" (tap)="registerMode = false" *ngIf="registerMode"></label>
+</StackLayout>

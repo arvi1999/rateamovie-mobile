@@ -1,0 +1,30 @@
+<ActionBar title="{{movie?.title}}" class="action-bar">
+    <!-- <NavigationButton icon="font://&#xf044;" class="h2" (tap)="goBack()"></NavigationButton> -->
+    <ActionItem icon="font://&#xf044;" class="fas h2 m-5" ios.position="right" (tap)="editClicked()"></ActionItem>
+</ActionBar>
+
+<StackLayout class="page" >
+    <StackLayout class="m-15" orientation="horizontal">
+        <label text="&#xf005;" [ngClass]="{'orange':movie?.avg_rating > 0}" class="h2 fas"></label>
+        <label text="&#xf005;" [ngClass]="{'orange':movie?.avg_rating > 1}" class="h2 fas"></label>
+        <label text="&#xf005;" [ngClass]="{'orange':movie?.avg_rating > 2}" class="h2 fas"></label>
+        <label text="&#xf005;" [ngClass]="{'orange':movie?.avg_rating > 3}" class="h2 fas"></label>
+        <label text="&#xf005;" [ngClass]="{'orange':movie?.avg_rating > 4}" class="h2 fas"></label>
+        <label text=" {{movie?.avg_rating}} ({{movie?.no_of_ratings}})" class="h2 far"></label>
+    </StackLayout>
+    <StackLayout class="m-15">
+        <Label class="h2" [text]="movie?.description"></Label>
+    </StackLayout>
+    <StackLayout class="m-15">
+        <label text="Rate this Movie?" class="h2"></label>
+    </StackLayout>
+    <StackLayout class="m-15" orientation="horizontal">
+        <label text="&#xf005;" *ngFor="let rate of [1, 2, 3, 4, 5]" [ngClass]="{'fas orange': highlight >= rate, 'far white': highlight < rate }" 
+            (tap)="setHighlight(rate)"
+            class="h1"></label>
+    </StackLayout>
+    <StackLayout>
+        <Button text="Rate Movie" class="-primary -rounded-lg" (tap)="rateClicked()"></Button>
+    </StackLayout>
+</StackLayout>
+
